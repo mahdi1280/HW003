@@ -1,0 +1,25 @@
+
+S	java:S106	"9Replace this use of System.out or System.err by a logger.(ö€é”ÿÿÿÿÿ
+N	java:S106"9Replace this use of System.out or System.err by a logger.(Ã®Ê—
+S	java:S106"9Replace this use of System.out or System.err by a logger.(ŸŠÉ¨üÿÿÿÿ
+N	java:S106"9Replace this use of System.out or System.err by a logger.(ëØ«
+S	java:S106"9Replace this use of System.out or System.err by a logger.(Şßÿàıÿÿÿÿ
+S	java:S106"9Replace this use of System.out or System.err by a logger.(ÍÎ¶îşÿÿÿÿ
+S	java:S106"9Replace this use of System.out or System.err by a logger.(µÅÑÉùÿÿÿÿ
+S	java:S106"9Replace this use of System.out or System.err by a logger.(İÍŸÆøÿÿÿÿ
+S	java:S106"9Replace this use of System.out or System.err by a logger.(”éĞñşÿÿÿÿ
+N	java:S106"9Replace this use of System.out or System.err by a logger.(»í¿À
+N	java:S106,"9Replace this use of System.out or System.err by a logger.(ÎˆÉ¨
+N	java:S1060"9Replace this use of System.out or System.err by a logger.(Ûî‘¼
+N	java:S1068"9Replace this use of System.out or System.err by a logger.(Ûî‘¼
+N	java:S106@"9Replace this use of System.out or System.err by a logger.(Ûî‘¼
+N	java:S106I"9Replace this use of System.out or System.err by a logger.(Ûî‘¼
+Z	java:S106V"9Replace this use of System.out or System.err by a logger.(èœà¬úÿÿÿÿ8À…ûŞ/
+Z	java:S106]"9Replace this use of System.out or System.err by a logger.(ÿøğûÿÿÿÿ8Á…ûŞ/
+T	java:S106h"9Replace this use of System.out or System.err by a logger.(´¸·z8Â…ûŞ/
+U	java:S106k"9Replace this use of System.out or System.err by a logger.(ú«õ´8Ô‡ıŞ/
+Z	java:S106m"9Replace this use of System.out or System.err by a logger.(Õÿèğùÿÿÿÿ8ôƒşŞ/
+k
+java:S11920"UDefine a constant instead of duplicating this literal "please enter count: " 4 times.(Ûî‘¼
+=
+java:S2189-""Add an end condition to this loop.(˜ïˆÿÿÿÿÿ

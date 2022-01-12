@@ -1,0 +1,12 @@
+
+Q
+java:S1854";Remove this useless assignment to local variable "bigInt5".(¿Ú©Ó
+S	java:S106"9Replace this use of System.out or System.err by a logger.(Å­Ëİúÿÿÿÿ
+N	java:S106
+"9Replace this use of System.out or System.err by a logger.(Î’ÛÚ
+M	java:S106"9Replace this use of System.out or System.err by a logger.(œ™À
+N	java:S106"9Replace this use of System.out or System.err by a logger.(ëë¢Ø
+S	java:S106"9Replace this use of System.out or System.err by a logger.(©ƒÌ®øÿÿÿÿ
+B
+java:S1481",Remove this unused "bigInt5" local variable.(¿Ú©Ó
+S	java:S106"9Replace this use of System.out or System.err by a logger.(¬Í«ùÿÿÿÿ

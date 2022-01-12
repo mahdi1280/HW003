@@ -1,0 +1,18 @@
+
+3
+java:S2119"Save and re-use this "Random".(¼İÅf
+S	java:S1066"9Replace this use of System.out or System.err by a logger.(äéöãúÿÿÿÿ
+d
+java:S2095""OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ûìûf
+j
+java:S2095F"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Á˜¡Óùÿÿÿÿ
+j
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ä³“äúÿÿÿÿ
+e
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(¥§»Ø
+q
+java:S2095N"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Õ‘„àøÿÿÿÿ8è¦ˆ…á/
+j
+java:S2095:"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Á˜¡Óùÿÿÿÿ
+e
+java:S2095%"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ÌÄÆõ

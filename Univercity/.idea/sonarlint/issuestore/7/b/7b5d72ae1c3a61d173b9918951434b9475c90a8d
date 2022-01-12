@@ -1,0 +1,9 @@
+
+N	java:S106d"9Replace this use of System.out or System.err by a logger.(é¹ÚÇ
+S	java:S106q"9Replace this use of System.out or System.err by a logger.(ŒœÆãüÿÿÿÿ
+D
+java:S1068")Remove this unused "terms" private field.(³ú¸Õıÿÿÿÿ
+G
+java:S1068",Remove this unused "factorId" private field.(­†ßÁúÿÿÿÿ
+?
+java:S1068")Remove this unused "terId" private field.(ğËÚÍ
