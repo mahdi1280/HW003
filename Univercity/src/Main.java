@@ -56,7 +56,7 @@ public class Main {
         boolean deleted;
         boolean state = true;
         while (state) {
-            switch (scanner.nextInt()) {
+            switch (getNumber()) {
                 case 1:
                     scanner.nextLine();
                     System.out.print("Please Enter the lastName: ");
@@ -102,7 +102,7 @@ public class Main {
                 case 4:
                     showUser(Role.STUDENT);
                     System.out.print("please enter id number: ");
-                    id = scanner.nextInt();
+                    id = getNumber();
                     deleted = university.userDelete(id);
                     if (deleted) {
                         System.out.println("delete successful");
@@ -113,7 +113,7 @@ public class Main {
                 case 5:
                     showUser(Role.TEACHER);
                     System.out.print("please enter id number: ");
-                    id = scanner.nextInt();
+                    id = getNumber();
                     deleted = university.userDelete(id);
                     if (deleted) {
                         System.out.println("delete successful");
@@ -124,7 +124,7 @@ public class Main {
                 case 6:
                     showUser(Role.ADMIN);
                     System.out.print("please enter id number: ");
-                    id = scanner.nextInt();
+                    id = getNumber();
                     deleted = university.userDelete(id);
                     if (deleted) {
                         System.out.println("delete successful");
@@ -140,7 +140,7 @@ public class Main {
                     System.out.print("Please Enter the firstName: ");
                     firstName = scanner.nextLine();
                     System.out.print("please enter id number: ");
-                    id = scanner.nextInt();
+                    id = getNumber();
                     if (university.updateUser(id, firstName, lastName)) {
                         System.out.println("updated successful");
                     } else {
@@ -155,7 +155,7 @@ public class Main {
                     System.out.print("Please Enter the firstName: ");
                     firstName = scanner.nextLine();
                     System.out.print("please enter id number: ");
-                    id = scanner.nextInt();
+                    id = getNumber();
                     if (university.updateUser(id, firstName, lastName)) {
                         System.out.println("updated successful");
                     } else {
@@ -170,7 +170,7 @@ public class Main {
                     System.out.print("Please Enter the firstName: ");
                     firstName = scanner.nextLine();
                     System.out.print("please enter id number: ");
-                    id = scanner.nextInt();
+                    id = getNumber();
                     if (university.updateUser(id, firstName, lastName)) {
                         System.out.println("updated successful");
                     } else {
@@ -178,10 +178,11 @@ public class Main {
                     }
                     break;
                 case 10:
+                    scanner.nextLine();
                     System.out.print("please enter name course: ");
                     String name = scanner.nextLine();
                     System.out.print("please enter name ooz: ");
-                    int ooz = scanner.nextInt();
+                    int ooz = getNumber();
                     university.saveCourse(name, ooz);
                     break;
                 case 11:
@@ -192,7 +193,7 @@ public class Main {
                     }
                     System.out.println("-------------------------");
                     System.out.println("please enter id: ");
-                    id = scanner.nextInt();
+                    id = getNumber();
                     if (university.deleteCourse(id))
                         System.out.println("deleted.");
                     else
@@ -219,12 +220,24 @@ public class Main {
         }
     }
 
+    private static int getNumber() {
+        while (true){
+            try {
+               int number= scanner.nextInt();
+               return number;
+            }catch (Exception e){
+                scanner.nextLine();
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
 
     public static void student() {
         showMenuStudent();
         boolean state = true;
         while (state) {
-            switch (scanner.nextInt()) {
+            switch (getNumber()) {
                 case 1:
                     System.out.println(student.toString());
                     break;
@@ -235,11 +248,11 @@ public class Main {
                     university.getCourses().forEach(System.out::println);
 
                     System.out.print("please enter one index: ");
-                    int index=scanner.nextInt();
+                    int index=getNumber();
                     System.out.print("please enter the year: ");
-                    int year = scanner.nextInt();
+                    int year = getNumber();
                     System.out.println("please enter the term: ");
-                    int term=scanner.nextInt();
+                    int term=getNumber();
                     Term term1=new Term(term,year,student);
                     TermCourse termCourse=new TermCourse(student,term1,university.getCoursesById(index));
                     university.addTermCourse(termCourse);
@@ -258,16 +271,16 @@ public class Main {
         showTeacherMenu();
         boolean state =false;
         while(state){
-            switch (scanner.nextInt()){
+            switch (getNumber()){
                 case 1:
                     System.out.println(teacher.toString());
                     break;
                 case 2:
                     System.out.println(student.toString());
                     System.out.println("please enter id: ");
-                    int id=scanner.nextInt();
+                    int id=getNumber();
                     System.out.println("please enter score: ");
-                    int score=scanner.nextInt();
+                    int score=getNumber();
                     university.addNomre(score,id);
                     break;
                 case 3:
@@ -310,7 +323,7 @@ public class Main {
         System.out.println("9.edit admin");
         System.out.println("10.save course");
         System.out.println("11.delete course");
-        System.out.println("12.show factor teacher");
+//        System.out.println("12.show factor teacher");
         System.out.println("13.show all user");
         System.out.println("14.exit");
     }
