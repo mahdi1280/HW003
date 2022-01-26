@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CinemaRepository {
+    
 
     public static void changeApproved(Connection connection, int id, boolean approved) throws SQLException {
         String update = "update cinema set approved = ? where id =?";

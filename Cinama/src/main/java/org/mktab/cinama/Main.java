@@ -1,5 +1,6 @@
 package org.mktab.cinama;
 
+import org.mktab.cinama.customexception.NotFoundUserException;
 import org.mktab.cinama.model.Reserve;
 import org.mktab.cinama.model.Role;
 import org.mktab.cinama.model.Ticket;
@@ -14,10 +15,12 @@ import java.util.Scanner;
 
 public class Main {
 
+    private static Scanner scanner=new Scanner(System.in);
+
     public static void main(String[] args) throws SQLException, ParseException {
         CinemaServiceImpl cinemaService=new CinemaService();
         User user = null;
-        Scanner scanner=new Scanner(System.in);
+
         ShowMenuLogin();
         boolean state =true;
         while (state){
@@ -37,15 +40,18 @@ public class Main {
                     userName=scanner.nextLine();
                     System.out.print("please enter password: ");
                     password=scanner.nextLine();
-                    user = cinemaService.login(userName,password);
-                    if( user != null) {
-                        if(user.getRole().equals(Role.CINEMA) && !cinemaService.findCinemaIdByUser(user).isApproved()) {
-                            System.out.println("is you cinema user but yet not active approved please wait for active profile by admin user.");
-                            break;
-                        }
-                        System.out.println("welcome ~~~");
-                        state = false;
+                    try {
+                        user = cinemaService.login(userName, password);
+                    }catch (NotFoundUserException notFoundUserException){
+                        System.out.println(notFoundUserException.getMessage());
+                        break;
                     }
+                    if(user.getRole().equals(Role.CINEMA) && !cinemaService.findCinemaIdByUser(user).isApproved()) {
+                        System.out.println("is you cinema user but yet not active approved please wait for active profile by admin user.");
+                        break;
+                    }
+                    System.out.println("welcome ~~~");
+                    state = false;
                     break;
                 case 3:
                     scanner.nextLine();
@@ -76,14 +82,14 @@ public class Main {
             showMenuCustomer();
 
             while (state){
-                switch (scanner.nextInt()){
+                switch (getNumber()){
                     case 1:
                         cinemaService.showTicket();
                         scanner.nextLine();
                         System.out.print("please enter the ticket id: ");
-                        int ticketId=scanner.nextInt();
+                        int ticketId=getNumber();
                         System.out.print("please enter the count: ");
-                        int count=scanner.nextInt();
+                        int count=getNumber();
                         Reserve reserve=Reserve.builder()
                                 .setCount(count)
                                 .setUserId(user.getId())
@@ -99,8 +105,8 @@ public class Main {
                         System.out.print("please entre the name: ");
                         String name=scanner.nextLine();
                         System.out.print("please enter the date: ");
-                        String date=scanner.nextLine();
-                        cinemaService.search(name ,Date.valueOf(date));
+                        Date date=getDate();
+                        cinemaService.search(name ,date);
                         break;
                     case 4:
                         state = false;
@@ -116,14 +122,14 @@ public class Main {
             showMenuAdmin();
             state=true;
             while (state){
-                switch (scanner.nextInt()){
+                switch (getNumber()){
                     case 1:
                         cinemaService.showCinema();
                         System.out.print("please enter the cinema id: ");
-                        int cinemaId=scanner.nextInt();
+                        int cinemaId=getNumber();
                         scanner.nextLine();
                         System.out.print("please enter the approved: ");
-                        boolean approved=scanner.nextBoolean();
+                        boolean approved=getBoolean();
                         cinemaService.approvedCinema(cinemaId,approved);
                         break;
                     case 2:
@@ -140,26 +146,26 @@ public class Main {
             while (state){
                 int cinemaId;
                 boolean approved;
-                switch (scanner.nextInt()){
+                switch (getNumber()){
                     case 1:
                         scanner.nextLine();
                         System.out.print("please enter name:");
                         String name = scanner.nextLine();
                         System.out.print("please enter price:");
-                        int price = scanner.nextInt();
+                        int price = getNumber();
                         System.out.print("please enter count:");
-                        int count = scanner.nextInt();
+                        int count = getNumber();
                         scanner.nextLine();
                         System.out.print("please enter date:");
-                        String stringDate = scanner.nextLine();
+                        Date stringDate =getDate();
                         System.out.print("please enter approved:");
-                        approved = scanner.nextBoolean();
+                        approved = getBoolean();
                         cinemaId = cinemaService.findCinemaIdByUser(user).getId();
                         Ticket build = Ticket.builder()
                                 .name(name)
                                 .price(price)
                                 .count(count)
-                                .date(Date.valueOf(stringDate)) //todo 1010-10-10
+                                .date(stringDate) //todo 1010-10-10
                                 .approved(approved)
                                 .cinemaId(cinemaId)
                                 .build();
@@ -170,9 +176,9 @@ public class Main {
                         cinemaService.showTicket(cinemaId);
                         scanner.nextLine();
                         System.out.print("please enter the approved: ");
-                        approved = scanner.nextBoolean();
+                        approved = getBoolean();
                         System.out.print("please enter the ticket id: ");
-                        cinemaId = scanner.nextInt();
+                        cinemaId = getNumber();
                         cinemaService.ticketApproved(cinemaId,approved);
                         break;
                     case 3:
@@ -182,6 +188,41 @@ public class Main {
                         state = false;
                         break;
                 }
+            }
+        }
+    }
+
+    private static boolean getBoolean() {
+        while (true){
+            try {
+                boolean flag= scanner.nextBoolean();
+                return flag;
+            }catch (Exception e){
+                scanner.nextLine();
+                System.out.println("boolean not valid");
+            }
+        }
+    }
+
+    private static int getNumber() {
+        while (true){
+            try {
+                int number = scanner.nextInt();
+                return number;
+            }catch (Exception e){
+                scanner.nextLine();
+                System.out.println("please enter valid number.");
+            }
+        }
+    }
+
+    private static Date getDate() {
+        while (true){
+            try {
+                Date date=Date.valueOf(scanner.nextLine());
+                return date;
+            }catch (Exception e){
+                System.out.println("date not valid.");
             }
         }
     }

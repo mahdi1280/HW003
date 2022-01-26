@@ -115,7 +115,10 @@ public class TicketRepository {
         ResultSet resultSet = preparedStatement.executeQuery();
         if(resultSet == null)
             return null;
-        return createTicket(resultSet).get(0);
+        List<Ticket> ticket = createTicket(resultSet);
+        if(ticket.size()>0)
+            return ticket.get(0);
+        return null;
     }
 
     public static boolean checkDateByCinemaId(Connection connection, int cinemaId) throws SQLException {

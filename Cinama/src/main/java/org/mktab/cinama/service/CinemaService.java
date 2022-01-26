@@ -1,6 +1,7 @@
 package org.mktab.cinama.service;
 
 import org.mktab.cinama.Main;
+import org.mktab.cinama.customexception.NotFoundUserException;
 import org.mktab.cinama.model.*;
 import org.mktab.cinama.repository.CinemaRepository;
 import org.mktab.cinama.repository.ReserveRepository;
@@ -77,7 +78,11 @@ public class CinemaService implements CinemaServiceImpl {
 
     @Override
     public User login(String username, String password) throws SQLException {
-       return UserRepository.login(connection, username, password);
+        User login = UserRepository.login(connection, username, password);
+        if(login == null){
+            throw new NotFoundUserException("not found exception");
+        }
+        return login;
     }
 
     @Override
